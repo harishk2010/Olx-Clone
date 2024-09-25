@@ -4,14 +4,13 @@ import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyAz6Hlffi0D_1vLBuEz1lUpmlBM-DvmJFc",
-    authDomain: "olx-clone-dfa2b.firebaseapp.com",
-    projectId: "olx-clone-dfa2b",
-    storageBucket: "olx-clone-dfa2b.appspot.com",
-    messagingSenderId: "917590690242",
-    appId: "1:917590690242:web:3d0d786efd4be7787c2e5b"
-  };
-
+  apiKey: "AIzaSyCnZbt3SmYI82v5su3AfbG4DfkWbaUApVc",
+  authDomain: "olx-clone-36453.firebaseapp.com",
+  projectId: "olx-clone-36453",
+  storageBucket: "olx-clone-36453.appspot.com",
+  messagingSenderId: "1047522499371",
+  appId: "1:1047522499371:web:8afabdb0d7d1ad08a3836e"
+};
 export const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const db = getFirestore(app);

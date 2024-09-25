@@ -1,4 +1,4 @@
-import React, { children, createContext ,useEffect } from "react";
+import React, { children, createContext ,useEffect, useState } from "react";
 import {db, storage } from "../utils/fireBaseConfig";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { addDoc, collection, getDocs } from "firebase/firestore";
@@ -6,7 +6,8 @@ import { addDoc, collection, getDocs } from "firebase/firestore";
 const ProductContext = createContext(null);
 
 export const ProductProvider = ({ children }) => {
-  const [products, setProducts] = React.useState([]);
+  const [products, setProducts] = useState([]);
+  // console.log(products,"ppp")
 
   const addProduct = async (title, description, price, images) => {
     try {
@@ -42,12 +43,14 @@ export const ProductProvider = ({ children }) => {
       });
 
       setProducts(allProducts);
+      // console.log(allProducts,"sss")
     } catch (error) {
       console.log(error);
     }
   };
   useEffect(() => {
     getProduct();
+    
   }, [addProduct]);
 
   return(

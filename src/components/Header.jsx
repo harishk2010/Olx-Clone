@@ -1,17 +1,26 @@
-import React from "react";
+import React, { useContext } from "react";
 import logo from "../assets/OLX-logo.png";
 import { CiSearch } from "react-icons/ci";
 import { FaChevronDown } from "react-icons/fa";
 import { TiPlus } from "react-icons/ti";
 import { useNavigate } from "react-router-dom";
+import AuthContext from "../contexts/Authcontext";
+import { toast } from "react-toastify";
 
 const Header = () => {
   const navigate=useNavigate()
+  const { user ,logOut }=useContext(AuthContext)
+
+  const handleLogout = () => {
+    toast.error("Logged Out");
+    logOut();
+    navigate('/login')
+  };
   return (
     <>
       {/* <h1>header</h1> */}
       <div className="w-full p-4  flex bg-gray-100 items-center  gap-3">
-        <img src={logo} alt="" className="w-[50px]" />
+        <img onClick={()=>navigate('/')} src={logo} alt="" className="w-[50px] cursor-pointer" />
 
         <div className="flex border-2  border-solid  border-black rounded-md bg-white items-center gap-2 px-2 py-3">
           <CiSearch size={20} />
@@ -34,8 +43,26 @@ const Header = () => {
           <FaChevronDown size={20} />
         </div>
         <>
-          <p>Name</p>
-          <button className="underline font-bold">Login</button>
+        {
+          user?(
+            <p>{user.displayName}</p>
+            
+
+          ):(
+            <p>Name</p>
+            
+          )
+        }
+        {
+          user?(
+            <button onClick={handleLogout} className="underline font-bold">Logout</button>
+          ):(
+            <button onClick={()=>navigate('login')} className="underline font-bold">Login</button>
+
+          )
+        }
+          
+          
         </>
         <div onClick={()=>navigate('sell')} className="flex items-center gap-2 point border-4 rounded-full cursor-pointer p-2 shadow-md shadow-gray-500">
           <div className="flex items-center gap-2 bg-white rounded-full border-2 p-1">
