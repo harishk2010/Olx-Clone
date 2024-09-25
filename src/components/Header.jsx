@@ -8,21 +8,26 @@ import AuthContext from "../contexts/Authcontext";
 import { toast } from "react-toastify";
 
 const Header = () => {
-  const navigate=useNavigate()
-  const { user ,logOut }=useContext(AuthContext)
+  const navigate = useNavigate();
+  const { user, logOut } = useContext(AuthContext);
 
   const handleLogout = () => {
     toast.error("Logged Out");
     logOut();
-    navigate('/login')
+    navigate("/login");
   };
   return (
     <>
       {/* <h1>header</h1> */}
-      <div className="w-full p-4  flex bg-gray-100 items-center  gap-3">
-        <img onClick={()=>navigate('/')} src={logo} alt="" className="w-[50px] cursor-pointer" />
+      <div className="w-full p-4  flex bg-gray-100 items-center justify-evenly gap-3">
+        <img
+          onClick={() => navigate("/")}
+          src={logo}
+          alt=""
+          className="w-[50px] cursor-pointer"
+        />
 
-        <div className="flex border-2  border-solid  border-black rounded-md bg-white items-center gap-2 px-2 py-3">
+        <div className="hidden md:flex border-2  border-solid  border-black rounded-md bg-white items-center gap-2 px-2 py-3">
           <CiSearch size={20} />
           <input type="text" className="outline-none border-black" />
           <FaChevronDown size={20} />
@@ -43,28 +48,24 @@ const Header = () => {
           <FaChevronDown size={20} />
         </div>
         <>
-        {
-          user?(
-            <p>{user.displayName}</p>
-            
-
-          ):(
-            <p>Name</p>
-            
-          )
-        }
-        {
-          user?(
-            <button onClick={handleLogout} className="underline font-bold">Logout</button>
-          ):(
-            <button onClick={()=>navigate('login')} className="underline font-bold">Login</button>
-
-          )
-        }
-          
-          
+          {user ? <p className="font-bold bg-white p-2 rounded-full border-2 border-black">{user.displayName}</p> : null}
+          {user ? (
+            <button onClick={handleLogout} className="underline font-bold">
+              Logout
+            </button>
+          ) : (
+            <button
+              onClick={() => navigate("login")}
+              className="underline font-bold"
+            >
+              Login
+            </button>
+          )}
         </>
-        <div onClick={()=>navigate('sell')} className="flex items-center gap-2 point border-4 rounded-full cursor-pointer p-2 shadow-md shadow-gray-500">
+        <div
+          onClick={() => navigate("sell")}
+          className="flex items-center gap-2 point border-4 rounded-full cursor-pointer p-1 shadow-md shadow-gray-500 hover:p-2"
+        >
           <div className="flex items-center gap-2 bg-white rounded-full border-2 p-1">
             <TiPlus />
             <span className="cursor-pointer font-bold">SELL</span>
@@ -72,7 +73,7 @@ const Header = () => {
         </div>
       </div>
       <div className="hidden md:flex flex-wrap h-10 w-full items-center justify-center">
-        <div className=" border-2 w-full py-1 flex justify-center items-center gap-7"> 
+        <div className=" border-2 w-full py-1 flex justify-center items-center gap-7">
           <span className="hover:text-blue-700">Cars</span>
 
           <span className="hover:text-blue-700">Motorcycles</span>

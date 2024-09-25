@@ -12,16 +12,25 @@ import Sell from "./pages/Sell";
 import {ProductProvider} from "./contexts/ProductContext";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import ProductDetail from "./pages/ProductDetail";
+// import ProductDetail from "./pages/ProductDetail";
 import Login from "./pages/Login";
 import {AuthProvider} from "./contexts/Authcontext";
+import { lazy, Suspense } from "react";
+const ProductDetail =lazy(() => import("./pages/ProductDetail"));
+
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
       <Route path="/" element={<Layout />}>
         <Route path="" element={<Home />} />
-        <Route path="/product-detail/:id" element={<ProductDetail/>}/>
+        <Route path="/product-detail/:id" element={
+          <Suspense fallback={
+            <h1 className="text-center font-bold text-3xl">Loading Data....</h1>
+          }>
+            <ProductDetail/>
+          </Suspense>
+        }/>
         <Route path="/sell" element={<Sell />} /> 
         <Route path="/add-product" element={<AddProducts />} />
         <Route path="login" element={<Login />} />
@@ -37,7 +46,7 @@ function App() {
   return (
     <AuthProvider>
       <ProductProvider>
-      <ToastContainer richcolors theme='dark'/>
+      <ToastContainer richcolors  />
       <RouterProvider router={router} />
     </ProductProvider>
 

@@ -10,17 +10,17 @@ const ProductDetail = (product) => {
   const [image, setImage] = useState(0);
 
   const handleLeft = () => {
-    console.log("hi");
+   
     if (image > 0) {
       setImage(image - 1);
-      console.log("hi1");
+      
     }
   };
   const handleRight = () => {
-    console.log("bye");
+   
     if (image >= 0 && image < products[id].imageUrls.length - 1) {
       setImage(image + 1);
-      console.log("bye1");
+      
     }
   };
   // console.log(products[id].imageUrls[0],"sssssssss")
@@ -36,7 +36,7 @@ const ProductDetail = (product) => {
           </button>
           <img
             src={products[id].imageUrls[image]}
-            className="object-contain "
+            className="object-contai"
             alt=""
           />
           <button onClick={handleRight} className="relative top-0 right-10 ">
@@ -44,22 +44,29 @@ const ProductDetail = (product) => {
           </button>
         </div>
         <div className="flex flex-wrap w-full justify-center bg-gray-100 rounded-full ">
-          <img
-            src={products[id].imageUrls[0]}
-            className="hidden md:block md:w-50 sm:p-4 w-36 rounded-full"
-            alt=""
-          />
-          <img
-            src={products[id].imageUrls[1]}
-            className=" hidden md:block md:w-50 sm:p-4 w-36 rounded-full"
-            alt=""
-          />
+        {
+            products[id]?.imageUrls[0] &&(<img
+              src={products[id]?.imageUrls[0]}
+              className="hidden md:block md:w-50  sm:p-4 w-36 rounded-full"
+              alt=""
+            />)
+          }
+          {
+            products[id]?.imageUrls[1] &&(<img
+              src={products[id]?.imageUrls[1]}
+              className="hidden md:block md:w-50  sm:p-4 w-36 rounded-full"
+              alt=""
+            />)
+          }
+          {
+            products[id]?.imageUrls[2] &&(<img
+              src={products[id]?.imageUrls[2]}
+              className="hidden md:block md:w-50  sm:p-4 w-36 rounded-full"
+              alt=""
+            />)
+          }
 
-          <img
-            src={products[id].imageUrls[2]}
-            className="hidden md:block md:w-50  sm:p-4 w-36 rounded-full"
-            alt=""
-          />
+          
         </div>
       </div>
       <div className="bg-gray-100  lg:w-[40%] p-8 rounded-lg">

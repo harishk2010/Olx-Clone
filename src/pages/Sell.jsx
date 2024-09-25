@@ -2,11 +2,17 @@ import { BiLeftArrowAlt } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
 import list from "../utils/constants";
 import Categories from "../components/Categories";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import AuthContext from "../contexts/Authcontext";
 
 const Sell = () => {
   const [sub, setSub] = useState([]);
+  const {user}=useContext(AuthContext)
   const navigate = useNavigate();
+if(!user){
+  navigate('/login')
+}
+
   return (
     <div>
       <div onClick={() => navigate("/")} className="py-3 px-2 ">

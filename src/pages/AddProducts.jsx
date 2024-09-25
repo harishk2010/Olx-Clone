@@ -4,13 +4,20 @@ import ProductContext from "../contexts/ProductContext.jsx";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import Spinner from "../components/Spinner";
+import AuthContext from "../contexts/Authcontext.jsx";
 
 const AddProducts = () => {
+const {user}=useContext(AuthContext)
+const navigate = useNavigate();
+if(!user){
+  navigate('/login')
+}
+
+
   const [title, seTitle] = useState("");
   const [price, sePrice] = useState(0);
   const [description, setdescription] = useState("");
   const [image, setImage] = useState([]);
-  const navigate = useNavigate();
   const { addProduct } = useContext(ProductContext);
   const [loading, setLoading] = useState(false);
 
@@ -51,6 +58,7 @@ const AddProducts = () => {
                   placeholder="Title.."
                   className="w-full border-2 p-2 border-solid rounded"
                   type="text"
+                  required
                 />
               </div>
               <div className="my-2">
@@ -61,6 +69,7 @@ const AddProducts = () => {
                   className="border-2 border-solid w-full p-2 h-44 mt-2"
                   name=""
                   id=""
+                  required
                 ></textarea>
               </div>
               <div className="my-2">
@@ -69,6 +78,7 @@ const AddProducts = () => {
                   value={price}
                   onChange={(e) => sePrice(e.target.value)}
                   placeholder="Price"
+                  required
                   className="border-2 w-full p-2"
                 />
               </div>

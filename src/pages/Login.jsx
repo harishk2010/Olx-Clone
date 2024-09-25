@@ -63,39 +63,25 @@ const Login = () => {
     setSignIn(() => !signIn);
   };
   return (
-    <div
-      className="h-screen"
-      
-    >
-      
-      <div className="flex w-full h-full justify-center items-center">
+    <div className="h-[600px]">
+      <div className="flex w-full h-full justify-center items-center ">
         <form
           action=""
-          className="bg-gray-100 w-[25rem] py-20 px-16 opacity-80 rounded-sm"
+          className="bg-gray-100 border-2 border-black w-[25rem] py-20 px-16 opacity-100 rounded-lg"
         >
           {signIn ? (
-            <h1 className="text-3xl pb-5 text-center text-black">Sign Up</h1>
+            <h1 className="text-3xl font-bold pb-5 text-center text-black">Sign Up</h1>
           ) : (
-            <h1 className="text-3xl pb-5 text-center text-black">Log In</h1>
+            <h1 className="text-3xl font-bold pb-5 text-center text-black">Log In</h1>
           )}
 
-          <div className="py-2">
-            <input
-              required
-              type="email"
-              ref={email}
-              className="text-center py-3 border text-white rounded-md w-full outline-offset-1 outline-white"
-              placeholder="email"
-              style={{ color: "black" }}
-            />
-          </div>
           {signIn ? (
             <div className="py-2">
               <input
                 required
                 ref={name}
                 type="text"
-                className="text-center py-3 border text-black  rounded-md w-full outline-offset-1 outline-white"
+                className="text-center py-3 border-2 border-black text-black  rounded-md w-full outline-offset-1 outline-white"
                 placeholder="Username"
                 style={{ color: "black" }}
               />
@@ -103,6 +89,16 @@ const Login = () => {
           ) : (
             ""
           )}
+          <div className="py-2">
+            <input
+              required
+              type="email"
+              ref={email}
+              className="text-center py-3 border-2 border-black  text-white rounded-md w-full outline-offset-1 outline-white"
+              placeholder="email"
+              style={{ color: "black" }}
+            />
+          </div>
 
           <div className="py-2">
             <input
@@ -110,7 +106,7 @@ const Login = () => {
               type="password"
               ref={password}
               placeholder="Password"
-              className="text-center py-3 border rounded-md w-full outline-offset-1 outline-white"
+              className="text-center py-3 border-2 border-black rounded-md w-full outline-offset-1 outline-white"
               style={{ color: "black" }}
             />
           </div>
@@ -138,6 +134,7 @@ const Login = () => {
             >
               Log In
             </button>
+            
           )}
 
           {signIn ? (
