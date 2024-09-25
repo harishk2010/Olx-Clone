@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { BiLeftArrowAlt } from "react-icons/bi";
-import ProductContext from "../contexts/productContext";
+import ProductContext from "../contexts/ProductContext";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import Spinner from "../components/Spinner";
